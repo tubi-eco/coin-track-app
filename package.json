@@ -8,13 +8,21 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "apexcharts": "^3.35.4",
+    "axios": "^0.27.2",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap-vue": "^2.22.0",
     "core-js": "^3.8.3",
+    "es6-promise": "^4.2.8",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.14",
+    "vue-apexcharts": "^1.6.2",
+    "vue-axios": "^3.4.1",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.18.10",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
