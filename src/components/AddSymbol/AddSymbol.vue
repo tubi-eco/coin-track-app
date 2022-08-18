@@ -22,8 +22,10 @@ export default {
   data(){
     return{
       savedInfo:[],
+      counter: 1
     }
   },
+
   mounted() {
    if (localStorage.getItem('savedInfo')) {
       this.savedInfo = JSON.parse(localStorage.getItem('savedInfo'));
@@ -31,10 +33,10 @@ export default {
   },
   methods: {
     addNewData(item) {
-      let quantity =  Number(this.$el.querySelector(".countValue").textContent);
-      this.savedInfo.push({ ...item, quantity });
+      let counterValue = this.$store.state.counter;
+      this.savedInfo.push({ ...item,  counterValue});
       item = '';
-      quantity = '';
+      counterValue = '';
       this.saveData();
     },
     removeData(item) {

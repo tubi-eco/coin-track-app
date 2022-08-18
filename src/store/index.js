@@ -8,7 +8,7 @@ Vue.use(vueAxios,axios);
 export default new Vuex.Store({
   state: { 
     info: [],
-    counter:0,
+    counter:1,
   },
   actions: {
     getDataUrl(context) {
@@ -27,13 +27,21 @@ export default new Vuex.Store({
     getData(state, info) {
       state.info = info;
     },
+    increment(state){ 
+      state.counter++;
+    },
+    decrement(state){
+      if(state.counter==0){
+        state.counter;
+      }
+      else{
+        state.counter--;
+      }
+    },
   },
   getters: {
     info(state) {
       return state.info;
-    },
-    counter(state) {
-      return state.counter;
     },
   },
 })

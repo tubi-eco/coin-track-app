@@ -45,7 +45,7 @@ export default {
         },
       computed: {
         series() {
-          return this.savedInfo.map((item) => item.quantity)
+          return this.savedInfo.map((item) => item.counterValue)
         },
       },
       mounted() {

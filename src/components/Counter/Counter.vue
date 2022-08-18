@@ -1,6 +1,6 @@
 <template>
     <div class="counter">
-       <span class="countValue">{{ counter}}</span>
+       <span>{{ this.$store.state.counter }}</span>
        <span>
         <button @click="increment"><b-icon icon="caret-up-fill"></b-icon></button>
         <button @click="decrement"> <b-icon icon="caret-down-fill"></b-icon></button>
@@ -11,23 +11,17 @@
 <script>
 export default {
   name:'Counter',
-  data() {
+  data(){
     return {
-      counter: 1
-    };
+        counter: 1
+    }
   },
-
-  methods: {
-    increment() {
-      this.counter++;
+  methods:{
+    increment(){
+       this.$store.commit('increment');
     },
-    decrement() {
-      if(this.counter==0){
-        this.counter;
-      }
-      else{
-        this.counter--;
-      }
+    decrement(){
+        this.$store.commit('decrement');
     },
   }
 }

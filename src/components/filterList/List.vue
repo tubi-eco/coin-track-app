@@ -4,7 +4,7 @@
         <li v-for="(item, index) in filteredArticles" :key="index" :filter="filter" class="content" v-bind:id="index">
             <span><b>{{item.symbol}}</b> - {{item.lastPrice}}</span>
             <span class="button-container">
-             <Counter />  <AddButton v-on:click.native="addNewData(item)"/> <DeleteButton v-on:click.native="removeData(item)"/><UpdateButton />
+             <Counter/>  <AddButton v-on:click.native="addNewData(item)"/> <DeleteButton v-on:click.native="removeData(item)"/><UpdateButton />
             </span>
         </li>
         <span v-if="filteredArticles==0">Symbol not found!</span>
@@ -20,16 +20,16 @@ import UpdateButton from '@/components/Buttons/Update.vue'
 import Counter from '@/components/Counter/Counter.vue'
 export default {
   name: 'List',
-  props:['filter','count'],
+  props:['filter','counterValue'],
   data(){
     return{
-      savedInfo:[],
+      savedInfo:[]
     }
   },
   components:{AddButton, DeleteButton,UpdateButton,Counter},
   
   computed: {
-    ...mapGetters(["info"]),
+    ...mapGetters(["info","counter"]),
     filteredArticles() {
       if (this.filter) {
           return this.info.filter(item => {
@@ -44,12 +44,12 @@ export default {
       this.savedInfo = JSON.parse(localStorage.getItem('savedInfo'));
     };
   },
-  methods: {
-    addNewData(item) {
-      let quantity =  Number(this.$el.querySelector(".countValue").textContent);
-      this.savedInfo.push({ ...item, quantity });
+  methods: {  
+     addNewData(item) {
+      let counterValue = this.$store.state.counter;
+      this.savedInfo.push({ ...item,  counterValue});
       item = '';
-      quantity = '';
+      counterValue = '';
       this.saveData();
     },
     removeData(item) {
